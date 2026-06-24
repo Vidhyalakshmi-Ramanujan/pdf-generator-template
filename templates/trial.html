@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Page with Handlebars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white p-6">
+        <h1 class="text-4xl font-bold text-center">{{title}}</h1>
+        <p class="text-center text-xl mt-2">{{subtitle}}</p>
+    </header>
+
+    <main class="p-6">
+        <!-- Introduction Section -->
+        <section id="introduction" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Introduction</h2>
+            <p class="text-lg">{{introduction}}</p>
+        </section>
+
+        <!-- Blog Posts Section -->
+        <section id="blog-posts" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Blog Posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {{#each blogPosts}}
+                <div class="bg-white shadow p-4 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2">{{this.title}}</h3>
+                    <p>{{this.content}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Testimonials</h2>
+            <div class="space-y-6">
+                {{#each testimonials}}
+                <div class="bg-white shadow p-4 rounded-lg">
+                    <p class="italic">"{{this.feedback}}"</p>
+                    <p class="text-right font-bold">- {{this.name}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {{#each products}}
+                <div class="bg-white shadow p-4 rounded-lg">
+                    <img src="{{this.image}}" alt="{{this.name}}" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-lg font-semibold">{{this.name}}</h3>
+                    <p class="text-sm text-gray-600">{{this.description}}</p>
+                    <p class="text-lg font-bold text-blue-600">${{this.price}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Contact Us</h2>
+            <form id="contact-form" class="bg-white shadow p-6 rounded-lg">
+                <label class="block mb-4">
+                    <span class="text-gray-700">Name</span>
+                    <input type="text" name="name" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm" placeholder="Your name">
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Email</span>
+                    <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm" placeholder="Your email">
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Message</span>
+                    <textarea name="message" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm" rows="4" placeholder="Your message"></textarea>
+                </label>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4">
+        <p>&copy; 2025 Dynamic Page. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

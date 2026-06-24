@@ -1,0 +1,72 @@
+<head><style>
+         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+      @font-face {
+            font-family:'Noto Sans TC';
+            src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+        }
+    * {
+      font-family: 'Noto Sans TC', 'Noto Serif TC','Consolas', sans-serif;
+      font-size: 12px;
+    }
+    html{
+      page-break-inside: avoid;
+    }
+    .templateTable {
+      width: 100%;
+      border-collapse: collapse;
+  }
+
+  .templateTable th {
+      background: #888;
+      color: black;
+  }
+
+  .templateTable th,
+  .templateTable td {
+      text-align: left;
+      vertical-align: top;
+      padding: 3px 5px;
+  }
+  .templateTableHeading{
+    color: black; 
+    font-weight: 600;
+    font-size: 14px;
+    
+  }
+  .subTotatlRow .sub-total-text {
+      text-align: right;
+  }
+  .tdHeight td{
+      min-height: 222px;
+  }
+  .weights{
+     display: inline-block;
+     width: 100%;
+     text-align: center;
+     margin: 10px 0;     
+    }
+        .total {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid black;
+        width: 50%
+      }
+      .footer {
+        display: inline-flex;
+        width: 100%;
+        justify-content: flex-start;
+        margin-top:30px;
+        margin-bottom:40px
+        }
+        .templateTable {
+  page-break-inside: auto;
+  page-break-before: auto;
+  page-break-after: auto;
+}
+
+.templateTable tr {
+  page-break-inside: auto;
+  break-inside: auto; /* For modern browsers */
+}
+
+</style></head><body class="main"><div style="page-break-inside: avoid;"><table class="templateTable"><tbody><tr style="display: flex; justify-content: space-between;"><td style="background-color: transparent;"><span>{{date_time}}</span></td><th style="background-color: transparent; text-align: center; font-size: 18px;"><span>HONG KONG</span><br><span>CONTAINER LOAD PLAN</span><br><span>({{movement_type}})</span></th><td style="background-color: transparent;"><span></span></td></tr></tbody></table><table class="templateTable"><tbody><tr><td width="20%" colspan="2"><span class="templateTableHeading">LOAD PLAN NO: </span><span>{{load_plan_no}}</span><br><span class="templateTableHeading">VESSEL / VOYAGE: </span><span>{{vessel}}/{{voyage_no}}</span><br><span class="templateTableHeading">CONTAINER NO.: </span><span>{{container_no}}</span><br><span class="templateTableHeading">LOAD PORT: </span><span>{{load_port}}</span><br><span class="templateTableHeading">TRACKER: </span><span>{{tracker}}</span><br><span class="templateTableHeading">PREPARED BY: </span><span>{{prepared_by}}</span><br></td><td width="20%" colspan="2" style="text-align: center;"><span class="templateTableHeading">S/O NO.: </span><span>{{carrier_so_no}}</span><br><span class="templateTableHeading">LINER: </span><span>{{carrier_company_name}}</span><br><span class="templateTableHeading">CONTAINER TYPE: </span><span>{{container_type}}</span><br><span class="templateTableHeading">DISCHARGE PORT: </span><span>{{discharge_port}}</span><br><span class="templateTableHeading">CY CLOSING: </span><span>{{cy_closing_date}}</span><br><span class="templateTableHeading">TEL NO.: </span><span>{{tel_no}}</span><br><span class="templateTableHeading">PREPARED DATE: </span><span>{{prepared_date}}</span><br></td><td width="20%" colspan="2" style="text-align: right;"><span class="templateTableHeading">LOAD TYPE: </span><span>{{load_type}}</span><br><span class="templateTableHeading">SEAL NO.: </span><span>{{seal_no}}</span><br></td></tr></tbody></table><table class="templateTable" align="left" border="0" cellpadding="0" cellspacing="0" style="text-align: left;"><tbody><tr class="templateTableHeading"><td style="text-align: center;"><div style="display: flex; justify-content: center; height: 30px;"><div style="width: 170px;">LOAD  S/O No. <br> SEQ CUST. PO / REF. NO.</div></div></td><td style="text-align: center;"><div style="display: flex; justify-content: center; height: 30px;"><div style="width: 170px;">SEQ ITEM</div></div></td><td style="text-align: center;"><div style="display: flex; justify-content: center; height: 30px;"><div style="width: 170px;">QTY UNIT</div></div></td><td style="text-align: center;"><div style="display: flex; justify-content: center; height: 30px;"><div style="width: 170px;">CBM</div></div></td><td style="text-align: center;"><div style="display: flex; justify-content: center; height: 30px;"><div style="width: 170px;">KGS</div></div></td><td style="text-align: center;"><div style="display: flex; justify-content: center; height: 30px;"><div style="width: 170px;">Density</div></div></td></tr></tbody>{{#items_coll}}<tr style="border-top: 1px solid;"><td style="text-align: center;"><div><div style="width: 170px;">{{so_no}} / {{po_no}} / {{item_no}}</div><br><div>{{no_of_cartons}} {{carton_uom}}</div><div>{{item_catagory}}</div></div></td><td style="text-align: center;"><div><div style="width: 170px;">{{seq_item}}</div><br></div></td><td style="text-align: center;"><div><div style="width: 170px;">{{no_of_pieces}}</div><br><div>{{item_description}}</div><div>Receive in Date: {{receive_date}}</div></div></td><td style="text-align: center;"><div><div style="width: 170px;">{{volume_cbm}}</div><br></div></td><td style="text-align: center;"><div><div style="width: 170px;">{{weight_kgs}}</div><br></div></td><td style="text-align: center;"><div><div style="width: 170px;">{{density}}</div><br><div>CFS Loc.: {{cfs_loc}}</div></div></td></tr>{{/items_coll}}</table></div><div class="footer"><div class="total"><div>TOTAL:</div><div>{{total_pkgs}} PKGS</div><div>{{total_pieces}} Pieces</div><div>{{total_cbm}} CBM </div><div>{{total_kgs}} KGS</div></div></div><div class="weights"><div>GROSS WT = {{gross_wt}}</div></div><div><div class="instruction"><span>Remark:</span><br><span>{{remarks}}</span></div><br><br></div><div><div class="instruction"><span>1. One photo taken of the floor of the container after it is swept clean <span class="highlight">掃掃掃掃掃掃掃,拍拍張掃掃拍的掃掃拍的</span></span></div><div class="instruction"><span>2. One photo taken of the floor of the container after it is swept clean with one door (the one showing the container number) closed <span class="highlight">閉拍閉掃閉閉閉閉掃閉,再拍掃掃掃掃拍的拍張</span></span></div><div class="instruction"><span>3. One photo taken mid-way into the stuffing operation <span class="highlight">拍拍掃拍的拍的拍張</span></span></div><div class="instruction"><span>4. One photo taken after the completion of the stuffing operation, with the hanging of the lashing net <span class="highlight">拍拍張拍拍拍拍的掃拍</span></span></div><div class="instruction"><span>5. One photo taken after the completion of the stuffing operation, with the hanging of the lashing net and the closing of one door (the one showing the container number) <span class="highlight">閉拍閉掃閉閉閉閉掃閉,再拍拍張拍拍拍拍的掃拍</span></span></div></div></body>
